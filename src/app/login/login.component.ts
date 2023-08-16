@@ -16,12 +16,29 @@ export class LoginComponent implements OnInit {
   email:string = "";
   pwd:string = "";
   private router = inject(Router);
+  errormsg: string ="error wrong credential";
 
   ngOnInit() {
-    throw new Error('Method not implemented.');
   }
+
   signin(event:any){
-    this.router.navigate(['/account']);
+    console.log("at signin");
+    console.log(this.email,this.pwd);
+    let users = [{'email':'john@com.au','password':'123'},
+    {'email':'john@com.au','password':'123'},
+    {'email':'john@com.au','password':'123'}]
+    event.preventDefault();
+    for (let i=0; i<users.length; i++){
+      if (this.email == users[i].email && this.pwd == users[i].password){
+          this.router.navigate(['/account']);
+          console.log("login success");
+      }else{
+        console.log(this.errormsg);
+      }
+
+    }
+
+   
   }
 
 }
