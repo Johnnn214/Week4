@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   email:string = "";
   pwd:string = "";
   private router = inject(Router);
-  errormsg: string ="error wrong credential";
+  errormsg: string ="";
 
   ngOnInit() {
   }
@@ -34,11 +34,9 @@ export class LoginComponent implements OnInit {
           console.log("login success");
       }else{
         console.log(this.errormsg);
-      }
-
+        this.errormsg="User credentials do not match";
+      }   
     }
-
-   
   }
 
 }
