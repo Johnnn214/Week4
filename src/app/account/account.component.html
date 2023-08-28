@@ -1,3 +1,12 @@
-<h1>Account page</h1>
-
-<img src="" alt="image">
+<div>
+    <div *ngIf="loggedin">
+        <h1>Account page</h1>
+        <div>Username: {{currentuser.username}}</div>
+        <div>Email: {{currentuser.email}}</div>
+        <div>Birthdate: {{currentuser.birthdate}}</div>
+        <div>age: {{currentuser.age}}</div>
+    </div>
+    <div *ngIf="!loggedin">
+        <app-login></app-login>
+    </div>
+</div>

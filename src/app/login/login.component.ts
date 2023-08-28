@@ -17,6 +17,7 @@ import { Observable } from 'rxjs';
 export class LoginComponent implements OnInit {
   
   private router = inject(Router);
+  
   private AuthService = inject (AuthService);
   email:string = "";
   pwd:string = "";

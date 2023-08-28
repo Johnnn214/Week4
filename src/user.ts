@@ -1,6 +1,5 @@
 
 export class User {
-   
     username:string;
     birthdate:string;
     age:number;
