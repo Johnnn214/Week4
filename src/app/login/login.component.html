@@ -1,31 +1,38 @@
 
 <div>
-    <h1 class="heading">Log in</h1>
-<form>
-    <div class="form-outline mb-4 w-75">
-        <div class="col ">
-            <input type="text" [(ngModel)]="email"  name="email" class="form-control" />
-            <label class="form-label">Email address</label>
-        </div>
-    </div>
     
-    <!-- Password input -->
-    <div class="form-outline mb-4 w-75 ">
-        <div class="col ">  
-            <input type="password" [(ngModel)]="pwd" name="pwd" class="form-control" />
-            <label class="form-label">Password</label>
-        </div>
-    </div>
+    <div *ngIf="!loggedin" >
+        <h1 class="heading">Log in</h1>
+        <form>
+            <div class="form-outline mb-4 w-75">
+                <div class="col ">
+                    <input type="text" [(ngModel)]="email"  name="email" class="form-control" />
+                    <label class="form-label">Email address</label>
+                </div>
+            </div>
+            
+            <!-- Password input -->
+            <div class="form-outline mb-4 w-75 ">
+                <div class="col ">  
+                    <input type="password" [(ngModel)]="pwd" name="pwd" class="form-control" />
+                    <label class="form-label">Password</label>
+                </div>
+            </div>
 
 
-         
-    <!-- Submit button -->
-    <div class="row mb-4 w-100">
-        <div class="col d-flex justify-content-center">
-            <button type="button" (click)="signin($event) " class="btn btn-primary">Sign in</button>
-        </div>
+                
+            <!-- Submit button -->
+            <div class="row mb-4 w-100">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" (click)="signin($event) " class="btn btn-primary">Sign in</button>
+                </div>
+            </div>
+        </form>
     </div>
-  </form>
+    <div *ngIf="loggedin">
+        <h1> You are already logged in.</h1>
+        <a href="/account" >Home</a>
+    </div>
 
   <p>{{errormsg}}</p>
 

@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { User } from 'src/user';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -12,31 +15,44 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  
+  private router = inject(Router);
+  private AuthService = inject (AuthService);
   email:string = "";
   pwd:string = "";
-  private router = inject(Router);
   errormsg: string ="";
-
+  newuser:User = new User();
+  loggedin:boolean = false;
   ngOnInit() {
+    if (sessionStorage.getItem('currentUser')){
+      this.loggedin = true;
+    }else{
+      this.loggedin = false;
+    }
   }
 
   signin(event:any){
     console.log("at signin");
-    console.log(this.email,this.pwd);
-    let users = [{'email':'john@com.au','password':'123'},
-    {'email':'john@com.au','password':'123'},
-    {'email':'john@com.au','password':'123'}]
     event.preventDefault();
-    for (let i=0; i<users.length; i++){
-      if (this.email == users[i].email && this.pwd == users[i].password){
-          this.router.navigate(['/account']);
-          console.log("login success");
-      }else{
-        console.log(this.errormsg);
-        this.errormsg="User credentials do not match";
-      }   
+    this.AuthService.login(this.email,this.pwd).subscribe({
+      next:
+        (data)=>{
+          if (data.valid == true){
+            this.newuser = new User(data.username, data.birthdate, data.age, data.email, data.password, data.valid)
+            this.AuthService.setCurrentuser(this.newuser);
+            this.router.navigate(['/']);
+          }else{
+           
+            this.errormsg = "There is a problem with the credentials";
+          }
+      
+      error:
+        this.errormsg = "There is a problem with the credentials";
+      
     }
+      
+   
+  })
   }
 
 }
