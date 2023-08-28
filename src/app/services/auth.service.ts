@@ -28,7 +28,6 @@ export class AuthService {
 
   setCurrentuser(newuser:User){
     sessionStorage.setItem('currentUser',JSON.stringify(newuser));
-
   }
   getCurrentuser(){
     return sessionStorage.getItem('currentUser');

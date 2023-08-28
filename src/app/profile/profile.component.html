@@ -1,1 +1,37 @@
-<p>profile works!</p>
+<div>
+    
+    <div *ngIf="loggedin">
+        <h1> Profile</h1>
+        <button type="button" (click)="edit($event) " >Edit</button>
+        <button *ngIf="show" type="button" (click)="cancel($event) " >cancel</button>
+        <div >
+            <div>Username: {{currentuser.username}}</div>
+            <div>Birthdate: {{currentuser.birthdate}}</div>
+            <div>age: {{currentuser.age}}</div>
+        </div>
+        <div *ngIf="show" >
+            <form>
+                <div>
+                    <input type="text" [(ngModel)]="username"  name="username" class="form-control"yyy/>
+                    <label class="form-label">Username</label>
+                </div>
+                <div>
+                    <input type="text" [(ngModel)]="birthdate"  name="birthdate" class="form-control" />
+                    <label class="form-label">Birthdate</label>
+                </div>
+                <div>
+                    <input type="text" [(ngModel)]="age"  name="age" class="form-control" />
+                    <label class="form-label">Age</label>
+                </div>
+                <div >
+                    <div>
+                        <button type="button" (click)="submitform($event) " >submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div> 
+    <div *ngIf="!loggedin">
+        <app-login></app-login>
+    </div>
+</div>
