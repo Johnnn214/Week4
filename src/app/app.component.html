@@ -4,8 +4,10 @@
   <div class="container-fluid">
     <div class="navbar-brand" >Logo</div>
       <div class="navbar-nav">
+        <a class="nav-link" routerLink="/">Profile</a>
         <a class="nav-link" routerLink="/login">login</a>
         <a class="nav-link" routerLink="/account">Account</a>
+        <a class="nav-link " href="/login" (click) ="logout($event)">Logout</a>
       </div>
   </div>
 </nav>
