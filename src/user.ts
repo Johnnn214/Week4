@@ -9,7 +9,7 @@ export class User {
     valid:boolean;
 
     constructor(username:string='',birthdate:string="", age:number= 0, email:string='',
-    password:string='',valid=false){
+    password:string='',valid:boolean=false){
        
         this.username = username;
         this.birthdate = birthdate;
