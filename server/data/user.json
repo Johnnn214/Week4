@@ -1,0 +1,5 @@
+{"people":
+    [{"username": "abc","birthdate":"sep 12","age":"100","email":"abc@com.au","password":"123","valid":"false"},
+    {"username": "def","birthdate":"sep 12","age":"100","email":"def@com.au","password":"123","valid":"false"} ,
+    {"username": "ghi","birthdate":"sep 12","age":"100","email":"ghi@com.au","password":"123","valid":"false"}]
+} 
